@@ -22,11 +22,14 @@ class CheckBoxListWidget(ToolTipListWidget):
     def addItem(self, item, checked = True) -> None:
         if isinstance(item, str):
             item = QListWidgetItem(item)
-        item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
-        if checked:
-            item.setCheckState(Qt.CheckState.Checked)
-        else:
-            item.setCheckState(Qt.CheckState.Unchecked)
+        
+        if checked != None:
+            item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
+            if checked:
+                item.setCheckState(Qt.CheckState.Checked)
+            else:
+                item.setCheckState(Qt.CheckState.Unchecked)
+                
         super().addItem(item)
 
     def toggleState(self, state):
